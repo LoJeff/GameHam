@@ -1,6 +1,12 @@
 {
   "resources": [
-    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
+    {"id":{"name":"MapGenerate","path":"objects/MapGenerate/MapGenerate.yy",},"order":1,},
+    {"id":{"name":"Tile","path":"scripts/Tile/Tile.yy",},"order":3,},
+    {"id":{"name":"Map","path":"scripts/Map/Map.yy",},"order":2,},
+    {"id":{"name":"Coord","path":"scripts/Coord/Coord.yy",},"order":0,},
+    {"id":{"name":"Font1","path":"fonts/Font1/Font1.yy",},"order":0,},
+    {"id":{"name":"MapGenerationRoom","path":"rooms/MapGenerationRoom/MapGenerationRoom.yy",},"order":1,},
+    {"id":{"name":"grid_draw","path":"scripts/grid_draw/grid_draw.yy",},"order":1,},
   ],
   "Options": [
     {"name":"Main","path":"options/main/options_main.yy",},
@@ -15,7 +21,7 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"roomId":{"name":"MapGenerationRoom","path":"rooms/MapGenerationRoom/MapGenerationRoom.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":1,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
