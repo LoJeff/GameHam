@@ -29,7 +29,6 @@ if (place_meeting(x, y + 1, OWall)) && (key_jump)
 /* Horizontal collision */
 if (place_meeting(x + hsp, y, OWall))
 {
-	show_debug_message("COLLIDE HORIZONTAL");
 	while (!place_meeting(x + sign(hsp), y, OWall))
 	{
 		x = x + sign(hsp);
