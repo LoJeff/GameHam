@@ -135,10 +135,10 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 	static create_template_pool = function() {
 		// Tags: p0, pu, pd, pb
 		template_pool = array_create(4);
-		pb = tag_get_asset_ids("pb", asset_room);
-		pd = tag_get_asset_ids("pd", asset_room);
-		pu = tag_get_asset_ids("pu", asset_room);
-		p0 = tag_get_asset_ids("p0", asset_room);
+		var pb = tag_get_asset_ids("pb", asset_room);
+		var pd = tag_get_asset_ids("pd", asset_room);
+		var pu = tag_get_asset_ids("pu", asset_room);
+		var p0 = tag_get_asset_ids("p0", asset_room);
 		
 		template_pool[ROOM_PORTALS.NONE] = array_create(array_length(p0) + array_length(pu) + array_length(pd) + array_length(pb))
 		template_pool[ROOM_PORTALS.UP] = array_create(array_length(pu) + array_length(pb))
@@ -159,7 +159,7 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 		
 		for (var i = 0; i < array_length(pd); ++i) {
 			template_pool[ROOM_PORTALS.NONE][array_length(pu) + array_length(pb) + i] = pd[i];
-			template_pool[ROOM_PORTALS.DOWN][array_length(pb) + i] = pb[i];
+			template_pool[ROOM_PORTALS.DOWN][array_length(pb) + i] = pd[i];
 		}
 		
 		for (var i = 0; i < array_length(p0); ++i) {

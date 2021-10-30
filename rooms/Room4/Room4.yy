@@ -381,7 +381,6 @@
   "resourceVersion": "1.0",
   "name": "Room4",
   "tags": [
-    "pu",
     "pd",
   ],
   "resourceType": "GMRoom",
