@@ -50,6 +50,8 @@
   },
   "resourceVersion": "1.0",
   "name": "Gen4",
-  "tags": [],
+  "tags": [
+    "portal_1",
+  ],
   "resourceType": "GMRoom",
 }

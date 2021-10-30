@@ -1,7 +1,7 @@
  // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function Map(_max_width, _max_height, _num_rooms) constructor {
-	// ---Map Generate Functions---
+	// ---Helper Functions---
 	static add_adjacent_tiles_to_pool = function(_coord, _weight) {		
 		add_tile_to_pool(_coord, 0, 1, _weight);
 		add_tile_to_pool(_coord, 0, -1, _weight);
@@ -133,13 +133,19 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 	}
 	
 	static create_template_pool = function() {
-		template_pool = ds_map_create();
-		show_debug_message("ROOM: " + string(asset_get_index("Gen")))
-		show_debug_message("ROOM: " + string(asset_get_index("Gen1")))
-		show_debug_message("ROOM: " + string(asset_get_index("Gen2")))
-		show_debug_message("ROOM: " + string(asset_get_index("Gen3")))
-		show_debug_message("ROOM: " + string(asset_get_index("Gen4")))
+		// Implement later
+		template_p_1 = ds_list_create()
+		template_p_2 = ds_list_create()
+		template_p_3 = ds_list_create()
+		template_p_4 = ds_list_create()
+		template_pool = [template_p_1, template_p_2, template_p_3, template_p_4]
+		
 		return template_pool;
+	}
+	
+	static choose_random_template_id = function() {
+		// Implement later
+		
 	}
 
 	static populate_tempate_ids = function() {
@@ -176,6 +182,7 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 			}
 			
 			cur_tile = ds_grid_get(map_grid, cur_coord.x, cur_coord.y);
+			cur_tile.template_id = choose_random_template_id(template_pool, adj_tiles);
 		}
 		
 		// Get furthest room(s) from start
@@ -185,6 +192,53 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 		end_tile = ds_grid_get(map_grid, end_coord.x, end_coord.y);
 		end_tile.tile_type = TILE_TYPES.END;
 		// show_debug_message("END_COORD: " + string(end_coord.x) + ", " + string(end_coord.y));
+	}
+	
+	// ---External API Functions---
+	
+	static clean = function() {
+		ds_grid_destroy(map_grid);
+	}
+	
+	static get_room_id = function(_x, _y, _dir) {
+		switch(_dir)
+		{
+			case DIRECTION.LEFT:
+				_x -= 1;
+				break;
+			case DIRECTION.RIGHT:
+				_x += 1;
+				break;
+			case DIRECTION.UP:
+				_y -= 1;
+				break;
+			case DIRECTION.DOWN:
+				_y += 1;
+				break;
+		}
+		return ds_grid_get(map_grid, _x, _y);
+	}
+	
+	static get_adj_rooms = function(_x, _y) {
+		var adj_coords = [
+			new Coord(_coord.x - 1, _coord.y),
+			new Coord(_coord.x, _coord.y + 1),
+			new Coord(_coord.x + 1, _coord.y),
+			new Coord(_coord.x, _coord.y - 1)
+		]; //left up right down
+	
+		adj_tiles = [false, false, false, false]; //left up right down
+		for (var i = 0; i < 4; ++i) {
+			if map_tile_in_bounds_coord(adj_coords[i].x, adj_coords[i].y)
+			{
+				cur_tile = ds_grid_get(map_grid, adj_coords[i].x, adj_coords[i].y);
+				if cur_tile.tile_type != TILE_TYPES.EMPTY
+				{
+					adj_tiles[i] = true;
+				}
+			}
+		}
+		return adj_tiles
 	}
 	
 	// ---Constructor---
@@ -197,6 +251,8 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 	map_grid = ds_grid_create(max_width, max_height);
 	ds_grid_clear(map_grid, new Tile(TILE_TYPES.EMPTY));
 	start_coord = random_coord(max_width, max_height);
+	end_coord = undefined;
+	
 	ds_grid_set(map_grid, start_coord.x, start_coord.y, new Tile(TILE_TYPES.START));
 	
 	tile_pool = ds_map_create();
@@ -221,8 +277,6 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 		add_adjacent_tiles_to_pool(rand_coord, weight);
 	}
 
-	end_coord = undefined;
-	tile_list = ds_list_create();
 	populate_tempate_ids();
 
 	ds_map_destroy(tile_pool);
