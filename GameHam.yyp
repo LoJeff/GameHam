@@ -1,12 +1,15 @@
 {
   "resources": [
     {"id":{"name":"sSmoke_1","path":"sprites/sSmoke_1/sSmoke_1.yy",},"order":20,},
+    {"id":{"name":"AI","path":"scripts/AI/AI.yy",},"order":6,},
     {"id":{"name":"shWhite","path":"shaders/shWhite/shWhite.yy",},"order":0,},
     {"id":{"name":"sBG1_street","path":"sprites/sBG1_street/sBG1_street.yy",},"order":15,},
     {"id":{"name":"sEnemy","path":"sprites/sEnemy/sEnemy.yy",},"order":3,},
     {"id":{"name":"OLevelEnd","path":"objects/OLevelEnd/OLevelEnd.yy",},"order":10,},
     {"id":{"name":"MapGenerate","path":"objects/MapGenerate/MapGenerate.yy",},"order":1,},
+    {"id":{"name":"pathfind_fill_grid","path":"scripts/pathfind_fill_grid/pathfind_fill_grid.yy",},"order":7,},
     {"id":{"name":"sRoof_BGFar","path":"sprites/sRoof_BGFar/sRoof_BGFar.yy",},"order":27,},
+    {"id":{"name":"OItem","path":"objects/OItem/OItem.yy",},"order":19,},
     {"id":{"name":"OCamera","path":"objects/OCamera/OCamera.yy",},"order":4,},
     {"id":{"name":"bullet_water","path":"sprites/bullet_water/bullet_water.yy",},"order":17,},
     {"id":{"name":"o_healthbar","path":"objects/o_healthbar/o_healthbar.yy",},"order":17,},
@@ -24,6 +27,7 @@
     {"id":{"name":"bullet","path":"sprites/bullet/bullet.yy",},"order":9,},
     {"id":{"name":"Room4","path":"rooms/Room4/Room4.yy",},"order":29,},
     {"id":{"name":"OWall","path":"objects/OWall/OWall.yy",},"order":8,},
+    {"id":{"name":"sItem","path":"sprites/sItem/sItem.yy",},"order":34,},
     {"id":{"name":"o_healthbar_boss","path":"objects/o_healthbar_boss/o_healthbar_boss.yy",},"order":16,},
     {"id":{"name":"sEnemyA","path":"sprites/sEnemyA/sEnemyA.yy",},"order":4,},
     {"id":{"name":"Player","path":"sprites/Player/Player.yy",},"order":0,},

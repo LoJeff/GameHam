@@ -10,7 +10,8 @@ if (mode != TRANS_MODE.OFF)
 }
 
 draw_set_color(c_white);
-draw_text(50,50,string(percent));
+draw_text(50,200,string(percent));
+draw_text(50,250,string(room));
 
 //show_debug_message("room is: " + string(room));
 //show_debug_message("instance count is: " + string(instance_count));

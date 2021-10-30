@@ -1,7 +1,7 @@
 // before any step
 x = OPlayer.x;
 y = OPlayer.y;
- 
+
 image_xscale = -1;
 image_angle = point_direction(x, y, mouse_x, mouse_y);
 
