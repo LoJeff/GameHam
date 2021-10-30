@@ -134,18 +134,19 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 	
 	static create_template_pool = function() {
 		// Implement later
-		template_p_1 = ds_list_create()
-		template_p_2 = ds_list_create()
-		template_p_3 = ds_list_create()
-		template_p_4 = ds_list_create()
-		template_pool = [template_p_1, template_p_2, template_p_3, template_p_4]
+		template_pool = array_create(4);
+		for (var i = 0; i < array_length(template_pool); ++i) {
+			template_pool[i] = ds_list_create();
+		}
 		
 		return template_pool;
 	}
 	
 	static choose_random_template_id = function() {
 		// Implement later
-		
+		show_debug_message(room_get_name(room_first));
+		show_debug_message(string(room_next(room_first)));
+		show_debug_message(room_get_name(room_next(room_first)));
 	}
 
 	static populate_tempate_ids = function() {
@@ -187,10 +188,14 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 		
 		// Get furthest room(s) from start
 		end_coord = ds_list_find_value(top_ends, floor(random(top_ends_max_size)))[0];
-		ds_list_destroy(top_ends);
-		ds_map_destroy(template_pool);
 		end_tile = ds_grid_get(map_grid, end_coord.x, end_coord.y);
 		end_tile.tile_type = TILE_TYPES.END;
+		
+		// Clean up
+		ds_list_destroy(top_ends);
+		for (var i = 0; i < array_length(template_pool); ++i) {
+			ds_list_destroy(template_pool[i]);
+		}
 		// show_debug_message("END_COORD: " + string(end_coord.x) + ", " + string(end_coord.y));
 	}
 	
