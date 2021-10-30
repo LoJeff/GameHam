@@ -15,7 +15,7 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 		{
 			if !adjacent_tile_in_pool_or_map_excluding_base(new_coord, _coord)
 			{
-				show_debug_message("ADDED: " + string(new_coord))
+				// show_debug_message("ADDED: " + string(new_coord))
 				ds_map_add(tile_pool, json_stringify(new_coord), _weight);
 				total_weight += _weight;
 			}
@@ -44,7 +44,7 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 	}
 	
 	static tile_exists_in_pool = function(_coord) {
-		show_debug_message("POOL EXIST: " + string(_coord) + " , " + string(ds_map_exists(tile_pool, json_stringify(_coord))))
+		// show_debug_message("POOL EXIST: " + string(_coord) + " , " + string(ds_map_exists(tile_pool, json_stringify(_coord))))
 		return ds_map_exists(tile_pool, json_stringify(_coord));
 	}
 	
@@ -66,7 +66,7 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 				key_coord = ds_map_find_next(tile_pool, key_coord);
 			}
 		}
-		show_debug_message("RAND: " + string(key_coord))
+		// show_debug_message("RAND: " + string(key_coord))
 		return json_parse(key_coord);
 	}
 	
@@ -131,12 +131,24 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 		}
 		return adj_tiles
 	}
+	
+	static create_template_pool = function() {
+		template_pool = ds_map_create();
+		show_debug_message("ROOM: " + string(asset_get_index("Gen")))
+		show_debug_message("ROOM: " + string(asset_get_index("Gen1")))
+		show_debug_message("ROOM: " + string(asset_get_index("Gen2")))
+		show_debug_message("ROOM: " + string(asset_get_index("Gen3")))
+		show_debug_message("ROOM: " + string(asset_get_index("Gen4")))
+		return template_pool;
+	}
 
 	static populate_tempate_ids = function() {
 		top_ends = ds_list_create()
 		top_ends_max_size = 1;
 		stack = ds_stack_create();
 		traversed_set = ds_map_create();
+		
+		template_pool = create_template_pool();
 
 		ds_stack_push(stack, [start_coord, 0]);
 
@@ -145,7 +157,7 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 			cur_data = ds_stack_pop(stack);
 			cur_coord = cur_data[0];
 			cur_dist = cur_data[1];
-			show_debug_message("STACK_CUR: " + string(cur_coord.x) + ", " + string(cur_coord.y) + " CUR_DIST: " + string(cur_dist))
+			// show_debug_message("STACK_CUR: " + string(cur_coord.x) + ", " + string(cur_coord.y) + " CUR_DIST: " + string(cur_dist))
 			
 			adj_tiles = add_adjacent_tiles_to_stack(traversed_set, stack, cur_coord, cur_dist);
 			
@@ -169,9 +181,10 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 		// Get furthest room(s) from start
 		end_coord = ds_list_find_value(top_ends, floor(random(top_ends_max_size)))[0];
 		ds_list_destroy(top_ends);
+		ds_map_destroy(template_pool);
 		end_tile = ds_grid_get(map_grid, end_coord.x, end_coord.y);
 		end_tile.tile_type = TILE_TYPES.END;
-		show_debug_message("END_COORD: " + string(end_coord.x) + ", " + string(end_coord.y));
+		// show_debug_message("END_COORD: " + string(end_coord.x) + ", " + string(end_coord.y));
 	}
 	
 	// ---Constructor---
@@ -191,7 +204,7 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 	total_weight = 0;
 	
 	add_adjacent_tiles_to_pool(start_coord, weight);
-	show_debug_message("START: " + string(start_coord))
+	// show_debug_message("START: " + string(start_coord))
 	
 	for (i = 0; i < num_rooms; ++i) {
 		if ds_map_size(tile_pool) == 0
@@ -200,7 +213,7 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 			break;
 		}
 		var rand_coord = get_random_tile_from_pool();
-		show_debug_message(typeof(rand_coord))
+		// show_debug_message(typeof(rand_coord))
 		remove_from_pool(rand_coord);
 		ds_grid_set(map_grid, rand_coord.x, rand_coord.y, new Tile(TILE_TYPES.GENERIC));
 		
@@ -215,8 +228,8 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 	ds_map_destroy(tile_pool);
 	
 	
-	show_debug_message("DONE")
-	show_debug_message(string(num_rooms))
+	// show_debug_message("DONE")
+	// show_debug_message(string(num_rooms))
 }
 
 
