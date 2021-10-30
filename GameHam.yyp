@@ -8,6 +8,7 @@
     {"id":{"name":"OLevelEnd","path":"objects/OLevelEnd/OLevelEnd.yy",},"order":10,},
     {"id":{"name":"MapGenerate","path":"objects/MapGenerate/MapGenerate.yy",},"order":1,},
     {"id":{"name":"pathfind_fill_grid","path":"scripts/pathfind_fill_grid/pathfind_fill_grid.yy",},"order":7,},
+    {"id":{"name":"sBBT_bullet","path":"sprites/sBBT_bullet/sBBT_bullet.yy",},"order":4,},
     {"id":{"name":"sRoof_BGFar","path":"sprites/sRoof_BGFar/sRoof_BGFar.yy",},"order":27,},
     {"id":{"name":"OItem","path":"objects/OItem/OItem.yy",},"order":19,},
     {"id":{"name":"OCamera","path":"objects/OCamera/OCamera.yy",},"order":4,},
