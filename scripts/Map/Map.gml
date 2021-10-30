@@ -216,29 +216,13 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 				_y += 1;
 				break;
 		}
-		return ds_grid_get(map_grid, _x, _y);
-	}
-	
-	static get_adj_rooms = function(_x, _y) {
-		var adj_coords = [
-			new Coord(_coord.x - 1, _coord.y),
-			new Coord(_coord.x, _coord.y + 1),
-			new Coord(_coord.x + 1, _coord.y),
-			new Coord(_coord.x, _coord.y - 1)
-		]; //left up right down
-	
-		adj_tiles = [false, false, false, false]; //left up right down
-		for (var i = 0; i < 4; ++i) {
-			if map_tile_in_bounds_coord(adj_coords[i].x, adj_coords[i].y)
-			{
-				cur_tile = ds_grid_get(map_grid, adj_coords[i].x, adj_coords[i].y);
-				if cur_tile.tile_type != TILE_TYPES.EMPTY
-				{
-					adj_tiles[i] = true;
-				}
-			}
+		tile = ds_grid_get(map_grid, _x, _y);
+		if tile.tile_type == TILE_TYPES.EMPTY
+		{
+			return undefined;
+		} else {
+			return tile.room_id;
 		}
-		return adj_tiles
 	}
 	
 	// ---Constructor---
