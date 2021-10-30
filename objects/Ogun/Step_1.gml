@@ -12,7 +12,7 @@ if (fireing_type = 1)
 	if (mouse_check_button(mb_left)) && (firingdelay < 0)
 	{
 		recoil = 4;
-		firingdelay = 60;
+		firingdelay = 5;
 		with (instance_create_layer(x, y, "Bullets", Obullet)) //creates ID
 		{
 			speed = 25; // fixed speed not changeable
@@ -26,10 +26,10 @@ else if (fireing_type = 2)
 	if (mouse_check_button(mb_left)) && (firingdelay < 0)
 	{
 		recoil = 4;
-		firingdelay = 20;
+		firingdelay = 6;
 		with (instance_create_layer(x, y, "Bullets", Obullet_water)) //creates ID
 		{
-			speed = 7; // fixed speed not changeable
+			speed = 20; // fixed speed not changeable
 			direction = other.image_angle + random_range(-108,108); //other refers to gun
 			image_angle = direction; 
 		}
