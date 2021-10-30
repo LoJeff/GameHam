@@ -10,7 +10,9 @@
     {"id":{"name":"bullet","path":"sprites/bullet/bullet.yy",},"order":9,},
     {"id":{"name":"OWall","path":"objects/OWall/OWall.yy",},"order":8,},
     {"id":{"name":"sEnemyA","path":"sprites/sEnemyA/sEnemyA.yy",},"order":4,},
+    {"id":{"name":"Room3","path":"rooms/Room3/Room3.yy",},"order":3,},
     {"id":{"name":"Player","path":"sprites/Player/Player.yy",},"order":0,},
+    {"id":{"name":"SildeTransition","path":"scripts/SildeTransition/SildeTransition.yy",},"order":4,},
     {"id":{"name":"Wall","path":"sprites/Wall/Wall.yy",},"order":7,},
     {"id":{"name":"Ogun","path":"objects/Ogun/Ogun.yy",},"order":6,},
     {"id":{"name":"PlayerA","path":"sprites/PlayerA/PlayerA.yy",},"order":1,},
@@ -23,6 +25,7 @@
     {"id":{"name":"Map","path":"scripts/Map/Map.yy",},"order":2,},
     {"id":{"name":"ODead","path":"objects/ODead/ODead.yy",},"order":5,},
     {"id":{"name":"Coord","path":"scripts/Coord/Coord.yy",},"order":0,},
+    {"id":{"name":"OTransition","path":"objects/OTransition/OTransition.yy",},"order":9,},
     {"id":{"name":"Font1","path":"fonts/Font1/Font1.yy",},"order":0,},
     {"id":{"name":"MapGenerationRoom","path":"rooms/MapGenerationRoom/MapGenerationRoom.yy",},"order":1,},
     {"id":{"name":"grid_draw","path":"scripts/grid_draw/grid_draw.yy",},"order":1,},
@@ -42,6 +45,7 @@
   "RoomOrderNodes": [
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"MapGenerationRoom","path":"rooms/MapGenerationRoom/MapGenerationRoom.yy",},},
+    {"roomId":{"name":"Room3","path":"rooms/Room3/Room3.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":1,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
