@@ -10,3 +10,4 @@ hascontrol = true;
 
 player_hp = 50;
 max_health = 50;
+instance_create_layer(1000, 100, "Player", o_healthbar);

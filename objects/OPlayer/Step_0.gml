@@ -21,6 +21,7 @@ vsp = vsp + grv;
 if (place_meeting(x, y + 1, OWall)) && (key_jump)
 {
 	vsp = -10;
+	audio_play_sound(snd_jump, 10, false);
 }
 
 

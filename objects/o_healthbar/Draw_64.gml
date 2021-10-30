@@ -1,3 +1,4 @@
+
 draw_self();
 
 draw_health_ = lerp(draw_health_, OPlayer.player_hp, .25);
