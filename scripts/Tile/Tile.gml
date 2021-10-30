@@ -8,6 +8,14 @@ enum TILE_TYPES
 	GENERIC,
 }
 
+enum ROOM_PORTALS
+{
+	NONE,
+	UP,
+	DOWN,
+	BOTH,
+}
+
 function Tile(_tile_type) constructor {
 	tile_type = _tile_type;
 	template_id = -1;
