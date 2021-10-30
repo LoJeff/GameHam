@@ -19,7 +19,7 @@ switch(nextdirection)
 		{
 			draw_text(600,150,string(nextRoomID));
 			break;
-		}
+		} 
 		case DIRECTION.DOWN:
 		{
 			draw_text(600,200,string(nextRoomID));
