@@ -10,6 +10,7 @@ enum TILE_TYPES
 
 function Tile(_tile_type) constructor {
 	tile_type = _tile_type;
-	template_id = 0;
+	template_id = -1;
+	room_id = -1;
 	traversed = false;
 }
