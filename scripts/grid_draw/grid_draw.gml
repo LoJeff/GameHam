@@ -16,20 +16,22 @@ function grid_draw(grid, sx, sy) {
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
 	draw_set_colour(c_purple);
+	var width_space = 36;
 	for (var i=0; i<w; ++i)
 	{
-		draw_text(sx+(i+1)*18, sy, i)
+		draw_text(sx+(i+1)*width_space, sy, i)
 	}
 	for (var j=0; j<h; ++j)
 	{
-		draw_text(sx,sy+(j+1)*18, j)
+		draw_text(sx,sy+(j+1)*width_space, j)
 	}
 	draw_set_colour(c_white);
     for (var i=0; i<w; ++i)
     {
         for (var j=0; j<h; j++)
         {
-            var value = ds_grid_get(grid,i,j).tile_type;
+			cur_tile = ds_grid_get(grid,i,j)
+            var value = cur_tile.tile_type;
 			if value == TILE_TYPES.EMPTY
 			{
 				draw_set_colour(c_grey);
@@ -50,7 +52,11 @@ function grid_draw(grid, sx, sy) {
 			{
 				draw_set_colour(c_black);
 			}
-            draw_text(sx+((i+1)*18),sy+((j+1)*18),string(value));
+			if value == TILE_TYPES.GENERIC
+			{
+				value = string(cur_tile.template_id) + ":" + string(cur_tile.room_id);
+			}
+            draw_text(sx+((i+1)*width_space),sy+((j+1)*width_space),string(value));
         }
     }
  
