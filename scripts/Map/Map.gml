@@ -145,6 +145,13 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 		template_pool[ROOM_PORTALS.DOWN] = array_create(array_length(pd) + array_length(pb))
 		template_pool[ROOM_PORTALS.BOTH] = array_create(array_length(pb))
 		
+		/*
+		show_debug_message("pb: " + string(array_length(pb)))
+		show_debug_message("pd: " + string(array_length(pd)))
+		show_debug_message("pu: " + string(array_length(pu)))
+		show_debug_message("p0: " + string(array_length(p0)))
+		*/
+		
 		for (var i = 0; i < array_length(pb); ++i) {
 			template_pool[ROOM_PORTALS.NONE][i] = pb[i];
 			template_pool[ROOM_PORTALS.UP][i] = pb[i];
@@ -165,6 +172,13 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 		for (var i = 0; i < array_length(p0); ++i) {
 			template_pool[ROOM_PORTALS.NONE][array_length(pd) + array_length(pu) + array_length(pb) + i] = p0[i];
 		}
+		
+		/*
+		show_debug_message("BOTH: " + string(array_length(template_pool[ROOM_PORTALS.BOTH])))
+		show_debug_message("DOWN: " + string(array_length(template_pool[ROOM_PORTALS.DOWN])))
+		show_debug_message("UP: " + string(array_length(template_pool[ROOM_PORTALS.UP])))
+		show_debug_message("NONE: " + string(array_length(template_pool[ROOM_PORTALS.NONE])))
+		*/
 		
 		return template_pool;
 	}
@@ -211,7 +225,7 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 			var cur_tile = ds_grid_get(map_grid, cur_coord.x, cur_coord.y);
 			// show_debug_message("STACK_CUR: " + string(cur_coord.x) + ", " + string(cur_coord.y) + " CUR_DIST: " + string(cur_dist))
 			
-			show_debug_message("CUR_COORD_BEFORE: " + string(cur_coord.x) + ", " + string(cur_coord.y) + "TILE_TYPE: " + string(cur_tile.tile_type))
+			// show_debug_message("CUR_COORD_BEFORE: " + string(cur_coord.x) + ", " + string(cur_coord.y) + "TILE_TYPE: " + string(cur_tile.tile_type))
 			var adj_tiles = add_adjacent_tiles_to_stack(traversed_set, stack, cur_coord, cur_dist);
 			
 			ds_list_add(top_ends, [cur_coord, cur_dist+1]);
@@ -234,11 +248,11 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 				cur_tile.template_id = choose_random_template_id(template_pool, room_portals);
 			}
 			
-			if cur_tile.template_id > 0
+			if cur_tile.template_id >= 0
 			{
 				cur_tile.room_id = room_duplicate(cur_tile.template_id);
 			}
-			// show_debug_message("CUR_COORD_AFTER: " + string(cur_coord.x) + ", " + string(cur_coord.y) + "TILE_TYPE: " + string(cur_tile.tile_type))
+			// show_debug_message("CUR_COORD_AFTER: " + string(cur_coord.x) + ", " + string(cur_coord.y) + " TILE_TYPE: " + string(cur_tile.tile_type) + " TEMPLATE: " + room_get_name(cur_tile.template_id));
 		}
 		
 		// Get furthest room(s) from start
