@@ -27,6 +27,7 @@
   "properties": [],
   "overriddenProperties": [
     {"propertyId":{"name":"size","path":"objects/OEnemy/OEnemy.yy",},"objectId":{"name":"OEnemy","path":"objects/OEnemy/OEnemy.yy",},"value":"3","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"hp","path":"objects/OEnemy/OEnemy.yy",},"objectId":{"name":"OEnemy","path":"objects/OEnemy/OEnemy.yy",},"value":"12","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "Objects",
