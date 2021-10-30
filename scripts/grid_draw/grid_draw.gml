@@ -52,7 +52,7 @@ function grid_draw(grid, sx, sy) {
 			{
 				draw_set_colour(c_black);
 			}
-			if value == TILE_TYPES.GENERIC
+			if value == TILE_TYPES.GENERIC || value == TILE_TYPES.START
 			{
 				value = string(cur_tile.template_id) + ":" + string(cur_tile.room_id);
 			}

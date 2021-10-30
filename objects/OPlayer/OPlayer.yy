@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "Player",
-    "path": "sprites/Player/Player.yy",
+    "name": "sHamboidle",
+    "path": "sprites/sHamboidle/sHamboidle.yy",
   },
   "solid": false,
   "visible": true,

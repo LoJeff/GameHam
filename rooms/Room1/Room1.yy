@@ -275,8 +275,6 @@
   },
   "resourceVersion": "1.0",
   "name": "Room1",
-  "tags": [
-    "pb",
-  ],
+  "tags": [],
   "resourceType": "GMRoom",
 }

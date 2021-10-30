@@ -24,8 +24,5 @@ y += (yTo - y) / 25;
 var centered_x = x - view_w_half;
 var centered_y = y - view_h_half;
 
-show_debug_message(string(view_h_half) + ", " + string(room_height) + ", " + string(xTo) + ", " + string(yTo));
-show_debug_message(string(mouse_x) + ", " + string(mouse_y));
-
 // update camera view
 camera_set_view_pos(cam, centered_x, centered_y); //only usable when white rectangle is activated
