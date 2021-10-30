@@ -1,8 +1,17 @@
-//60 times every seconds
+ //60 times every seconds
 /* Movement */
-key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
-key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
-key_jump = keyboard_check_pressed(vk_space); //just one frame
+if (hascontrol)
+{
+	key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
+	key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
+	key_jump = keyboard_check_pressed(vk_space); //just one frame
+}
+else
+{
+	key_left = 0;
+	key_right = 0;
+	key_jump = 0;
+}
 
 var move = key_right - key_left; //temporary for one loop
 

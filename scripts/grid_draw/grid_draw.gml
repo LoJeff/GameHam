@@ -15,7 +15,7 @@ function grid_draw(grid, sx, sy) {
 	draw_set_font(Font1);
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	draw_set_colour(c_red);
+	draw_set_colour(c_purple);
 	for (var i=0; i<w; ++i)
 	{
 		draw_text(sx+(i+1)*18, sy, i)
@@ -29,18 +29,22 @@ function grid_draw(grid, sx, sy) {
     {
         for (var j=0; j<h; j++)
         {
-            var value = ds_grid_get(grid,i,j).room_id;
-			if value == 0
+            var value = ds_grid_get(grid,i,j).tile_type;
+			if value == TILE_TYPES.EMPTY
 			{
-				draw_set_colour(c_purple);
+				draw_set_colour(c_grey);
 			}
-			else if value == 1
+			else if value == TILE_TYPES.START
 			{
 				draw_set_colour(c_lime);
 			}
-			else if value == 2
+			else if value == TILE_TYPES.GENERIC
 			{
 				draw_set_colour(c_white);
+			}
+			else if value == TILE_TYPES.END
+			{
+				draw_set_colour(c_red);
 			}
 			else
 			{
