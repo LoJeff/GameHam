@@ -49,7 +49,7 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 	}
 	
 	static tile_exists_in_map = function(_coord) {
-		return ds_grid_get(map_grid, _coord.x, _coord.y).room_id > 0;
+		return ds_grid_get(map_grid, _coord.x, _coord.y).tile_type != TILE_TYPES.EMPTY;
 	}
 	
 	static get_random_tile_from_pool = function() {
@@ -90,11 +90,88 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 	}
 	
 	static map_tile_exists_coord = function(_coord) {
-		return (ds_grid_get(map_grid, _coord.x, _coord.y).room_id > 0);
+		return (ds_grid_get(map_grid, _coord.x, _coord.y).tile_type != TILE_TYPES.EMPTY);
 	}
 	
 	static increment_weight = function() {
 		weight *= 1.5;
+	}
+
+	static update_top_queue = function(_queue_id, _coord, _dist, _size) {
+		if ds_priority_size(_queue_id) >= _size
+		{
+			ds_priority_delete_min(_queue_id)
+		}
+		ds_priority_add(_queue_id, _coord, _dist);
+	}
+
+	static add_adjacent_tiles_to_stack = function(_traversed_set, _stack, _coord, _dist) {
+		var adj_coords = [
+			new Coord(_coord.x - 1, _coord.y),
+			new Coord(_coord.x, _coord.y + 1),
+			new Coord(_coord.x + 1, _coord.y),
+			new Coord(_coord.x, _coord.y - 1)
+		]; //left up right down
+	
+		adj_tiles = [false, false, false, false]; //left up right down
+		for (var i = 0; i < 4; ++i) {
+			if map_tile_in_bounds_coord(adj_coords[i].x, adj_coords[i].y)
+			{
+				cur_tile = ds_grid_get(map_grid, adj_coords[i].x, adj_coords[i].y);
+				if cur_tile.tile_type != TILE_TYPES.EMPTY
+				{
+					adj_tiles[i] = true;
+					if !cur_tile.traversed && cur_tile.tile_type != TILE_TYPES.START
+					{
+						cur_tile.traversed = true
+						ds_stack_push(_stack, [adj_coords[i], _dist+1]);
+					}
+				}
+			}
+		}
+		return adj_tiles
+	}
+
+	static populate_tempate_ids = function() {
+		top_ends = ds_list_create()
+		top_ends_max_size = 1;
+		stack = ds_stack_create();
+		traversed_set = ds_map_create();
+
+		ds_stack_push(stack, [start_coord, 0]);
+
+		while !ds_stack_empty(stack)
+		{
+			cur_data = ds_stack_pop(stack);
+			cur_coord = cur_data[0];
+			cur_dist = cur_data[1];
+			show_debug_message("STACK_CUR: " + string(cur_coord.x) + ", " + string(cur_coord.y) + " CUR_DIST: " + string(cur_dist))
+			
+			adj_tiles = add_adjacent_tiles_to_stack(traversed_set, stack, cur_coord, cur_dist);
+			
+			ds_list_add(top_ends, [cur_coord, cur_dist+1]);
+			if ds_list_size(top_ends) > top_ends_max_size
+			{
+				min_dist_idx = 0;
+				
+				for (var i = 1; i < ds_list_size(top_ends); ++i) {
+					if ds_list_find_value(top_ends, i)[1] < ds_list_find_value(top_ends, min_dist_idx)[1]
+					{
+						min_dist_idx = i;
+					}
+				}
+				ds_list_delete(top_ends, min_dist_idx);
+			}
+			
+			cur_tile = ds_grid_get(map_grid, cur_coord.x, cur_coord.y);
+		}
+		
+		// Get furthest room(s) from start
+		end_coord = ds_list_find_value(top_ends, floor(random(top_ends_max_size)))[0];
+		ds_list_destroy(top_ends);
+		end_tile = ds_grid_get(map_grid, end_coord.x, end_coord.y);
+		end_tile.tile_type = TILE_TYPES.END;
+		show_debug_message("END_COORD: " + string(end_coord.x) + ", " + string(end_coord.y));
 	}
 	
 	// ---Constructor---
@@ -105,9 +182,9 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 	randomize();
 	
 	map_grid = ds_grid_create(max_width, max_height);
-	ds_grid_clear(map_grid, new Tile(0));
+	ds_grid_clear(map_grid, new Tile(TILE_TYPES.EMPTY));
 	start_coord = random_coord(max_width, max_height);
-	ds_grid_set(map_grid, start_coord.x, start_coord.y, new Tile(1));
+	ds_grid_set(map_grid, start_coord.x, start_coord.y, new Tile(TILE_TYPES.START));
 	
 	tile_pool = ds_map_create();
 	weight = 1;
@@ -125,13 +202,19 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 		var rand_coord = get_random_tile_from_pool();
 		show_debug_message(typeof(rand_coord))
 		remove_from_pool(rand_coord);
-		ds_grid_set(map_grid, rand_coord.x, rand_coord.y, new Tile(2));
+		ds_grid_set(map_grid, rand_coord.x, rand_coord.y, new Tile(TILE_TYPES.GENERIC));
 		
 		increment_weight();
 		add_adjacent_tiles_to_pool(rand_coord, weight);
 	}
-	
+
+	end_coord = undefined;
+	tile_list = ds_list_create();
+	populate_tempate_ids();
+
 	ds_map_destroy(tile_pool);
+	
+	
 	show_debug_message("DONE")
 	show_debug_message(string(num_rooms))
 }
