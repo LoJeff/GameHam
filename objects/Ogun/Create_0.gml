@@ -3,3 +3,4 @@
 
 firingdelay =  0; 
 recoil = 0; 
+fireing_type = 2;
