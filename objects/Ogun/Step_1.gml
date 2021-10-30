@@ -14,7 +14,7 @@ if (mouse_check_button(mb_left)) && (firingdelay < 0)
 	with (instance_create_layer(x, y, "Bullets", Obullet)) //creates ID
 	{
 		speed = 30; // fixed speed not changeable
-		direction = other.image_angle + random_range(-5,5); //other refers to gun
+		direction = other.image_angle + random_range(-3,3); //other refers to gun
 		image_angle = direction;
 	}
 } 

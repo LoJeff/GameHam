@@ -380,6 +380,9 @@
   },
   "resourceVersion": "1.0",
   "name": "Room3",
-  "tags": [],
+  "tags": [
+    "pu",
+    "pd",
+  ],
   "resourceType": "GMRoom",
 }

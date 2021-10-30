@@ -404,6 +404,9 @@
   },
   "resourceVersion": "1.0",
   "name": "Room1",
-  "tags": [],
+  "tags": [
+    "pu",
+    "pd",
+  ],
   "resourceType": "GMRoom",
 }
