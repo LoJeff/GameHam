@@ -8,14 +8,14 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 0,
-  "bbox_right": 199,
+  "bbox_right": 399,
   "bbox_top": 0,
-  "bbox_bottom": 319,
+  "bbox_bottom": 639,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 200,
-  "height": 320,
+  "width": 400,
+  "height": 640,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -25,9 +25,9 @@
   "gridY": 0,
   "frames": [
     {"compositeImage":{"FrameId":{"name":"051d061f-e9de-4e92-aa14-91b63d8a6da1","path":"sprites/sSky/sSky.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"051d061f-e9de-4e92-aa14-91b63d8a6da1","path":"sprites/sSky/sSky.yy",},"LayerId":{"name":"86b486fd-d699-41ff-8ab0-a86c7f4d455c","path":"sprites/sSky/sSky.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"051d061f-e9de-4e92-aa14-91b63d8a6da1","path":"sprites/sSky/sSky.yy",},"LayerId":{"name":"22a8c7c3-60a3-4708-816b-1e590730ea5e","path":"sprites/sSky/sSky.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"051d061f-e9de-4e92-aa14-91b63d8a6da1","path":"sprites/sSky/sSky.yy",},"LayerId":{"name":"4676b54b-dcd6-473e-867a-205d24698ce5","path":"sprites/sSky/sSky.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"051d061f-e9de-4e92-aa14-91b63d8a6da1","path":"sprites/sSky/sSky.yy",},"LayerId":{"name":"86b486fd-d699-41ff-8ab0-a86c7f4d455c","path":"sprites/sSky/sSky.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"sSky","path":"sprites/sSky/sSky.yy",},"resourceVersion":"1.0","name":"051d061f-e9de-4e92-aa14-91b63d8a6da1","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
@@ -73,8 +73,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "GameHam",
-    "path": "GameHam.yyp",
+    "name": "Sprites",
+    "path": "folders/Sprites.yy",
   },
   "resourceVersion": "1.0",
   "name": "sSky",

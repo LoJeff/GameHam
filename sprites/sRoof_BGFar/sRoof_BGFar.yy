@@ -25,9 +25,8 @@
   "gridY": 0,
   "frames": [
     {"compositeImage":{"FrameId":{"name":"d46e1df3-9c62-4a48-bfa7-48a8e376922b","path":"sprites/sRoof_BGFar/sRoof_BGFar.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"d46e1df3-9c62-4a48-bfa7-48a8e376922b","path":"sprites/sRoof_BGFar/sRoof_BGFar.yy",},"LayerId":{"name":"2d77a340-3a6c-4dca-b0b4-1cf06674db47","path":"sprites/sRoof_BGFar/sRoof_BGFar.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"d46e1df3-9c62-4a48-bfa7-48a8e376922b","path":"sprites/sRoof_BGFar/sRoof_BGFar.yy",},"LayerId":{"name":"7f681ff4-6920-4f75-b565-2ecabb6d3f9d","path":"sprites/sRoof_BGFar/sRoof_BGFar.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-        {"FrameId":{"name":"d46e1df3-9c62-4a48-bfa7-48a8e376922b","path":"sprites/sRoof_BGFar/sRoof_BGFar.yy",},"LayerId":{"name":"2f6c5111-2e85-460d-bd3b-6d8477e8da00","path":"sprites/sRoof_BGFar/sRoof_BGFar.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"d46e1df3-9c62-4a48-bfa7-48a8e376922b","path":"sprites/sRoof_BGFar/sRoof_BGFar.yy",},"LayerId":{"name":"2d77a340-3a6c-4dca-b0b4-1cf06674db47","path":"sprites/sRoof_BGFar/sRoof_BGFar.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"sRoof_BGFar","path":"sprites/sRoof_BGFar/sRoof_BGFar.yy",},"resourceVersion":"1.0","name":"d46e1df3-9c62-4a48-bfa7-48a8e376922b","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
@@ -72,8 +71,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "GameHam",
-    "path": "GameHam.yyp",
+    "name": "Sprites",
+    "path": "folders/Sprites.yy",
   },
   "resourceVersion": "1.0",
   "name": "sRoof_BGFar",

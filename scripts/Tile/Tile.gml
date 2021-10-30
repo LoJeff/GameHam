@@ -21,4 +21,5 @@ function Tile(_tile_type) constructor {
 	template_id = -1;
 	room_id = -1;
 	traversed = false;
+	first_entry = false;
 }

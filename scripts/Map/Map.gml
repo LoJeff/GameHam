@@ -97,15 +97,7 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 		weight *= 1.5;
 	}
 
-	static update_top_queue = function(_queue_id, _coord, _dist, _size) {
-		if ds_priority_size(_queue_id) >= _size
-		{
-			ds_priority_delete_min(_queue_id)
-		}
-		ds_priority_add(_queue_id, _coord, _dist);
-	}
-
-	static add_adjacent_tiles_to_stack = function(_traversed_set, _stack, _coord, _dist) {
+	static add_adjacent_tiles_to_stack = function(_stack, _coord, _dist) {
 		var adj_coords = [
 			new Coord(_coord.x - 1, _coord.y),
 			new Coord(_coord.x, _coord.y + 1),
@@ -206,12 +198,27 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 		random_template_idx = floor(random(array_length(_template_pool[_room_portals])));
 		return _template_pool[_room_portals][random_template_idx];
 	}
+	
+	static update_top_ends = function(_top_ends, _coords, _dist, _top_ends_max_size) {
+		ds_list_add(_top_ends, [_coords, _dist+1]);
+		if ds_list_size(_top_ends) > _top_ends_max_size
+		{
+			var min_dist_idx = 0;
+				
+			for (var i = 1; i < ds_list_size(_top_ends); ++i) {
+				if ds_list_find_value(_top_ends, i)[1] < ds_list_find_value(_top_ends, min_dist_idx)[1]
+				{
+					min_dist_idx = i;
+				}
+			}
+			ds_list_delete(_top_ends, min_dist_idx);
+		}
+	}
 
-	static populate_template_ids = function() {
+	static populate_tiles = function() {
 		top_ends = ds_list_create()
-		top_ends_max_size = 1;
+		var top_ends_max_size = 1;
 		stack = ds_stack_create();
-		traversed_set = ds_map_create();
 		
 		template_pool = create_template_pool();
 
@@ -226,21 +233,9 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 			// show_debug_message("STACK_CUR: " + string(cur_coord.x) + ", " + string(cur_coord.y) + " CUR_DIST: " + string(cur_dist))
 			
 			// show_debug_message("CUR_COORD_BEFORE: " + string(cur_coord.x) + ", " + string(cur_coord.y) + "TILE_TYPE: " + string(cur_tile.tile_type))
-			var adj_tiles = add_adjacent_tiles_to_stack(traversed_set, stack, cur_coord, cur_dist);
+			var adj_tiles = add_adjacent_tiles_to_stack(stack, cur_coord, cur_dist);
 			
-			ds_list_add(top_ends, [cur_coord, cur_dist+1]);
-			if ds_list_size(top_ends) > top_ends_max_size
-			{
-				var min_dist_idx = 0;
-				
-				for (var i = 1; i < ds_list_size(top_ends); ++i) {
-					if ds_list_find_value(top_ends, i)[1] < ds_list_find_value(top_ends, min_dist_idx)[1]
-					{
-						min_dist_idx = i;
-					}
-				}
-				ds_list_delete(top_ends, min_dist_idx);
-			}
+			update_top_ends(top_ends, cur_coord, cur_dist, top_ends_max_size);
 			
 			room_portals = get_room_portal_enum(adj_tiles);
 			if cur_tile.tile_type == TILE_TYPES.GENERIC
@@ -257,11 +252,12 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 		
 		// Get furthest room(s) from start
 		end_coord = ds_list_find_value(top_ends, floor(random(top_ends_max_size)))[0];
-		end_tile = ds_grid_get(map_grid, end_coord.x, end_coord.y);
+		var end_tile = ds_grid_get(map_grid, end_coord.x, end_coord.y);
 		end_tile.tile_type = TILE_TYPES.END;
 		
 		// Clean up
 		ds_list_destroy(top_ends);
+		ds_stack_destroy(stack);
 		// show_debug_message("END_COORD: " + string(end_coord.x) + ", " + string(end_coord.y));
 	}
 	
@@ -309,6 +305,10 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 	end_coord = undefined;
 	
 	ds_grid_set(map_grid, start_coord.x, start_coord.y, new Tile(TILE_TYPES.START));
+	start_tile = ds_grid_get(map_grid, start_coord.x, start_coord.y);
+	start_tile.room_id = room;
+	start_tile.template_id = room;
+	
 	
 	tile_pool = ds_map_create();
 	weight = 1;
@@ -333,7 +333,7 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 		// show_debug_message("RAND_COORD: " + string(rand_coord.x) + ", " + string(rand_coord.y) + "TILE_TYPE: " + string(cur_tile.tile_type))
 	}
 
-	populate_template_ids();
+	populate_tiles();
 
 	ds_map_destroy(tile_pool);
 	
