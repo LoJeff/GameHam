@@ -272,6 +272,7 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 	}
 	
 	static get_room_id = function(_x, _y, _dir) {
+		
 		var loc_x = _x;
 		var loc_y = _y;
 		switch(_dir)
@@ -289,6 +290,7 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 				loc_y += 1;
 				break;
 		}
+		if (!map_tile_in_bounds_coord(loc_x, loc_y)) return undefined;
 		tile = ds_grid_get(map_grid, loc_x, loc_y);
 		if tile.tile_type == TILE_TYPES.EMPTY
 		{
