@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "bullet_water_1",
-    "path": "sprites/bullet_water_1/bullet_water_1.yy",
+    "name": "bullet_water",
+    "path": "sprites/bullet_water/bullet_water.yy",
   },
   "solid": false,
   "visible": true,

@@ -268,22 +268,24 @@ function Map(_max_width, _max_height, _num_rooms) constructor {
 	}
 	
 	static get_room_id = function(_x, _y, _dir) {
+		var loc_x = _x;
+		var loc_y = _y;
 		switch(_dir)
 		{
 			case DIRECTION.LEFT:
-				_x -= 1;
+				loc_x -= 1;
 				break;
 			case DIRECTION.RIGHT:
-				_x += 1;
+				loc_x += 1;
 				break;
 			case DIRECTION.UP:
-				_y -= 1;
+				loc_y -= 1;
 				break;
 			case DIRECTION.DOWN:
-				_y += 1;
+				loc_y += 1;
 				break;
 		}
-		tile = ds_grid_get(map_grid, _x, _y);
+		tile = ds_grid_get(map_grid, loc_x, loc_y);
 		if tile.tile_type == TILE_TYPES.EMPTY
 		{
 			return undefined;
