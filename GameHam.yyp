@@ -12,6 +12,7 @@
     {"id":{"name":"OItem","path":"objects/OItem/OItem.yy",},"order":19,},
     {"id":{"name":"OCamera","path":"objects/OCamera/OCamera.yy",},"order":4,},
     {"id":{"name":"bullet_water","path":"sprites/bullet_water/bullet_water.yy",},"order":1,},
+    {"id":{"name":"snd_fast_lazer","path":"sounds/snd_fast_lazer/snd_fast_lazer.yy",},"order":1,},
     {"id":{"name":"o_healthbar","path":"objects/o_healthbar/o_healthbar.yy",},"order":17,},
     {"id":{"name":"s_boss_1","path":"sprites/s_boss_1/s_boss_1.yy",},"order":19,},
     {"id":{"name":"PlayerR","path":"sprites/PlayerR/PlayerR.yy",},"order":2,},

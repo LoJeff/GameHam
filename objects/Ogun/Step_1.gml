@@ -25,6 +25,7 @@ else if (fireing_type = 2)
 {
 	if (mouse_check_button(mb_left)) && (firingdelay < 0)
 	{
+		audio_play_sound(snd_fast_lazer, 9, false);
 		recoil = 4;
 		firingdelay = 6;
 		with (instance_create_layer(x, y, "Bullets", Obullet_water)) //creates ID
