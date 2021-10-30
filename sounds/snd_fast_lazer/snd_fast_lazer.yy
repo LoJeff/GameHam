@@ -1,6 +1,6 @@
 {
   "compression": 0,
-  "volume": 0.06,
+  "volume": 0.07,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -10,14 +10,14 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snd_jump.mp3",
-  "duration": 0.168,
+  "soundFile": "snd_fast_lazer.mp3",
+  "duration": 0.653061,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",
   },
   "resourceVersion": "1.0",
-  "name": "snd_jump",
+  "name": "snd_fast_lazer",
   "tags": [],
   "resourceType": "GMSound",
 }
