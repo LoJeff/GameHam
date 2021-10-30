@@ -1,4 +1,4 @@
-/// @description Insert description here
+/// @description Progress the transition
 // You can write your code in this editor
 
 if (mode != TRANS_MODE.OFF)
