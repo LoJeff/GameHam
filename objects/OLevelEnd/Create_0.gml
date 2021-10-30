@@ -10,3 +10,32 @@ if (nextRoomID == undefined)
 {
 	instance_destroy();
 }                         
+
+next_x = MapGenerate.locationX;
+next_y = MapGenerate.locationY;
+hit = false;
+
+switch(nextdirection)
+{
+	case DIRECTION.LEFT:
+	{
+		next_x--;
+		break;
+	}
+	case DIRECTION.RIGHT:
+	{
+		next_x++;
+		break;
+	}
+	case DIRECTION.UP:
+	{
+		next_y--;
+		break;
+	}
+	case DIRECTION.DOWN:
+	{
+		next_y++;
+		break;
+	}
+}
+		
