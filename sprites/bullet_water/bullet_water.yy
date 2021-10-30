@@ -73,8 +73,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "bullets",
+    "path": "folders/Sprites/bullets.yy",
   },
   "resourceVersion": "1.0",
   "name": "bullet_water",
