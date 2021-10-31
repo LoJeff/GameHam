@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
+vspeed = vspeed + grv;
 /* Horizontal collision */
 if (place_meeting(x + hspeed, y, OWall))
 {
@@ -7,7 +8,7 @@ if (place_meeting(x + hspeed, y, OWall))
 	{
 		x = x + sign(hspeed);
 	}
-	hspeed = -hspeed;
+	hspeed = 0;
 }
 
 x = x + hspeed; //coordinate
@@ -19,7 +20,7 @@ if (place_meeting(x, y + vspeed, OWall))
 	{
 		y = y + sign(vspeed);
 	}
-	vspeed = -vspeed;
+	vspeed = 0;
 }
 
 y = y + vspeed;

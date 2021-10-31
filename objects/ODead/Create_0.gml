@@ -7,3 +7,4 @@ grv = 0.3;
 done = 0;
 
 image_speed = 0;
+audio_play_sound(snd_death_splat, 9, false);
